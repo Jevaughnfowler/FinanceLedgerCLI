@@ -1,10 +1,14 @@
 package com.pluralsight;
 
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Console {
 
     Scanner scanner = new Scanner(System.in);
+    private Transaction transcaction;
 
     public int promptForInt(String prompt){
         boolean hasResult = false;
@@ -28,6 +32,13 @@ public class Console {
 
 //need to make customize this console to make it interact with the information that the user enter
 // in order to make the file save to the csv file
+    public void saveTransaction () {
+        try (FileWriter writer = new FileWriter("transaction.csv",true)){
+            writer.write(transcaction.toCSVString() + "\n");
+        }catch (IOException e){
+            System.out.println("Error " + e.getMessage());
+        }
+    }
 
     public String promptForString(String prompt){
         System.out.print(prompt);
