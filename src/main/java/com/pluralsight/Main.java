@@ -53,8 +53,12 @@ public class Main {
 
     private static void AddDeposit(){
 
-        System.out.println("Would you Like to Make a Deposit");
-        System.out.println("Please Enter your information below");
+        System.out.println("Would you Like to Make a Deposit?" +
+                "\nIf Yes, Please Enter your information below" +
+                "\nOther (X) To Exit");
+
+
+
 
         scanner.nextLine();
         //we are gonna display steps for them to add there info

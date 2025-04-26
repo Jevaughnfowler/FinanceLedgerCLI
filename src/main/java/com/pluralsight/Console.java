@@ -26,7 +26,8 @@ public class Console {
 
     }
 
-
+//need to make customize this console to make it interact with the information that the user enter
+// in order to make the file save to the csv file
 
     public String promptForString(String prompt){
         System.out.print(prompt);
