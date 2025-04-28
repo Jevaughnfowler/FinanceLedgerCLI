@@ -83,20 +83,49 @@ public class Main {
         );
 
         // 3. Save transaction to transactions.csv
-
-          try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("transactions.csv", true))) {
-              writer.write(transaction.toCSVString() + "\n");
-              System.out.println("✅ Deposit saved successfully!");
-          } catch (Exception e) {
-              System.out.println("⚠️ Error saving the deposit: " + e.getMessage());
-
-          }
+        LedgerHelp.saveTransaction(transaction);
 
             //improve later make it as if you want to quit deposit or add another
 
     }
     private static void MakePayment () {
-        System.out.println("Please Make A payment (Debit Only)");
+
+        Console console = new Console();
+
+        System.out.println("\nWould you to make a Payment?");
+        System.out.println("If yes, please enter your information below.");
+        System.out.println("Otherwise, type (X) to cancel and return to Home.\n");
+
+        String cancel = console.promptForString("Press ENTER to continue or X to cancel: ");
+        if (cancel.equalsIgnoreCase("X")){
+            System.out.println("Payment cancelled. Returning to home screen");
+        }
+
+        String description = console.promptForString("Enter a description: ");
+        String vendor = console.promptForString("Enter the vendor name: ");
+
+
+        double amount = 0;
+        while (amount <= 0) {
+            amount = console.promptForInt("Enter the amount: ");
+            if (amount <= 0){
+                System.out.println("⚠️ Invalid amount. Please try again.");
+            }
+        }
+
+        amount = -amount;
+
+        Transaction transaction = new Transaction(
+                java.time.LocalDate.now(),
+                java.time.LocalTime.now(),
+                description,
+                vendor,
+                amount
+        );
+
+        LedgerHelp.saveTransaction(transaction);
+
+
         //work are going to prompt the user to enter there information
         //and we are gonna make sure it is saved to csv file
     }

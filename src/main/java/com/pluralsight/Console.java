@@ -31,16 +31,6 @@ public class Console {
 
     }
 
-//need to make customize this console to make it interact with the information that the user enter
-// in order to make the file save to the csv file
-    public void saveTransaction () {
-        try (FileWriter writer = new FileWriter("transaction.csv",true)){
-            writer.write(transaction.toString() + "\n");
-        }catch (IOException e){
-            System.out.println("Error " + e.getMessage());
-
-        }
-    }
 
     public String promptForString(String prompt){
         System.out.print(prompt);
