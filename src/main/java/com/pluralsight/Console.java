@@ -1,15 +1,11 @@
 package com.pluralsight;
 
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Console {
 
     Scanner scanner = new Scanner(System.in);
 
-    private Transaction transaction;
 
     public int promptForInt(String prompt){
         boolean hasResult = false;

@@ -85,7 +85,7 @@ public class Main {
         // 3. Save transaction to transactions.csv
         LedgerHelp.saveTransaction(transaction);
 
-            //improve later make it as if you want to quit deposit or add another
+        //improve later make it as if you want to quit deposit or add another
 
     }
     private static void MakePayment () {
@@ -123,6 +123,7 @@ public class Main {
                 amount
         );
 
+        // Save transaction to transactions.csv
         LedgerHelp.saveTransaction(transaction);
 
 
