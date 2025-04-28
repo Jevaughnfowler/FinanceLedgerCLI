@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Console {
 
     Scanner scanner = new Scanner(System.in);
-    private Transaction transcaction;
+
+    private Transaction transaction;
 
     public int promptForInt(String prompt){
         boolean hasResult = false;
@@ -34,9 +35,10 @@ public class Console {
 // in order to make the file save to the csv file
     public void saveTransaction () {
         try (FileWriter writer = new FileWriter("transaction.csv",true)){
-            writer.write(transcaction.toCSVString() + "\n");
+            writer.write(transaction.toString() + "\n");
         }catch (IOException e){
             System.out.println("Error " + e.getMessage());
+
         }
     }
 

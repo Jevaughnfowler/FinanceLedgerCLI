@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
+
     private static Scanner scanner = new Scanner(System.in);
+
 
     public static void main(String[] args) {
         HomeScreen();
@@ -63,7 +65,7 @@ public class Main {
         String cancel = console.promptForString("Press ENTER to continue or X to cancel: ");
         if (cancel.equalsIgnoreCase("X")) {
             System.out.println("Deposit cancelled. Returning to Home Screen...");
-            return; // exit the method
+            return;
         }
 
         // 1. Prompt for all deposit details
@@ -81,14 +83,16 @@ public class Main {
         );
 
         // 3. Save transaction to transactions.csv
-        try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("transactions.csv", true))) {
-            writer.write(transaction.toCSVString() + "\n");
-            System.out.println("✅ Deposit saved successfully!");
-        } catch (Exception e) {
-            System.out.println("⚠️ Error saving the deposit: " + e.getMessage());
 
-        }
+          try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("transactions.csv", true))) {
+              writer.write(transaction.toCSVString() + "\n");
+              System.out.println("✅ Deposit saved successfully!");
+          } catch (Exception e) {
+              System.out.println("⚠️ Error saving the deposit: " + e.getMessage());
 
+          }
+
+            //improve later make it as if you want to quit deposit or add another
 
     }
     private static void MakePayment () {
