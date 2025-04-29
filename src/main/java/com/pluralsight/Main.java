@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -88,6 +89,8 @@ public class Main {
         //improve later make it as if you want to quit deposit or add another
 
     }
+
+
     private static void MakePayment () {
 
         Console console = new Console();
@@ -131,10 +134,45 @@ public class Main {
         //and we are gonna make sure it is saved to csv file
     }
 
+
+
+    // system print out the ledger when they enter here
+    // display all enter by newest first
     private static void EnterLedger () {
-        // system print out the ledger when they enter here
-        // display all enter by newest first
-        //
+
+        Console console = new Console();
+        String choice;
+
+        System.out.println("Please choose an option: \n" +
+                "(A) All\n" +
+                "(D) Deposits\n" +
+                "(P) Payments\n" +
+                "(R) Reports\n" +
+                "Otherwise (H) Home");
+
+        choice = console.promptForString("Enter option").toUpperCase().trim();
+
+        switch (choice){
+            case "A":
+                LedgerHelp.showAllTransactions();
+                break;
+            case "D":
+                ShowDepositsOnly();
+                break;
+            case "P":
+                showPaymentsOnly();
+                break;
+            case "R":
+                showReportsMenu();
+                break;
+            case "H":
+                System.out.println("Returning Home...");
+                break;
+            default:
+                System.out.println("Invalid, Please try again");
+
+        }
+
 
     }
 }
