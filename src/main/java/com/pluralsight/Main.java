@@ -102,6 +102,7 @@ public class Main {
         String cancel = console.promptForString("Press ENTER to continue or X to cancel: ");
         if (cancel.equalsIgnoreCase("X")){
             System.out.println("Payment cancelled. Returning to home screen");
+            return;
         }
 
         String description = console.promptForString("Enter a description: ");
@@ -150,20 +151,25 @@ public class Main {
                 "(R) Reports\n" +
                 "Otherwise (H) Home");
 
-        choice = console.promptForString("Enter option").toUpperCase().trim();
+        choice = console.promptForString("Enter option \n").toUpperCase().trim();
 
         switch (choice){
             case "A":
                 LedgerHelp.showAllTransactions();
                 break;
             case "D":
-                ShowDepositsOnly();
+                LedgerHelp.showDepositsOnly();
                 break;
             case "P":
-                showPaymentsOnly();
+                LedgerHelp.showPaymentsOnly();
                 break;
             case "R":
-                showReportsMenu();
+                System.out.println("Choose report type: \n" +
+                        "(1) Month To Date\n" +
+                        "(2) Previous Month\n" +
+                        "(3) Year To Date\n" +
+                        "(4) Previous Year\n" +
+                        "(5) Search by Vendor");
                 break;
             case "H":
                 System.out.println("Returning Home...");
