@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.*;
 import java.util.List;
@@ -43,7 +44,8 @@ public class LedgerHelp {
         System.out.println("-------------------------------------------------------------------------------------------\n");
     }
 
-    public static void showDepositsOnly() {
+
+    public static void showDepositsOnly(){
         List<String> lines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))) {
@@ -73,7 +75,7 @@ public class LedgerHelp {
     }
 
 
-    public static void showPaymentsOnly (){
+    public static void showPaymentsOnly(){
         ArrayList<String> lines = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
@@ -88,7 +90,9 @@ public class LedgerHelp {
 
         Collections.reverse(lines);
 
-        System.out.println("\n--- Payments ---");
+        System.out.println("====================\n" +
+                "   Payments   \n" +
+                "===================");
         for (String line : lines) {
             String[] parts = line.split("\\|");
             double amount = Double.parseDouble(parts[4]);
@@ -99,6 +103,59 @@ public class LedgerHelp {
         }
         System.out.println("-------------------------------------------------------------------------------------------\n");
     }
+
+
+    public static void showMonthToDate(){
+        LocalDate today = LocalDate.now();
+        List<String> lines = new ArrayList<>();
+
+        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            System.out.println("⚠️ Error reading transactions: " + e.getMessage());
+            return;
+        }
+
+        System.out.println("================\n" +
+                "   Month To Date \n" +
+                "======================");
+        for (String line : lines){
+            String[] parts = line.split("\\|");
+            LocalDate transactionDate = LocalDate.parse(parts[0]);
+            if (transactionDate.getMonth() == today.getMonth() && transactionDate.getYear() == today.getYear()){
+                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+            }
+        }
+        System.out.println("--------------------------------------------------------------------------------------------\n");
+    }
+
+
+    public static void showPreviousMonths(){
+        LocalDate today = LocalDate.now();
+        LocalDate previousMonth = today.minusMonths(1);
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                line.add(line);
+            }
+        } catch (IOException e) {
+            System.out.println("⚠️ Error reading transactions: " + e.getMessage());
+            return;
+        }
+        System.out.println("========================\n" +
+                "    Previous Month    \n" +
+                "================================");
+        for(String line : lines){
+            String[] parts = line.split("\\|");
+            
+        }
+    }
+
 }
 
 

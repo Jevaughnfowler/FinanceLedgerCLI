@@ -54,6 +54,7 @@ public class Main {
         } while (!option.equals("X"));
     }
 
+
     private static void AddDeposit() {
 
         Console console = new Console();
@@ -136,9 +137,6 @@ public class Main {
     }
 
 
-
-    // system print out the ledger when they enter here
-    // display all enter by newest first
     private static void EnterLedger () {
 
         Console console = new Console();
