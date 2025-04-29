@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Transaction {
@@ -60,7 +61,9 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String toCSVString(){
-        return String.format("%s|%s|%s|%s|%.2f", date.toString(), time.toString(), description, vendor, amount);
+    public String toCSVString() {
+
+        String formattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        return String.format("%s|%s|%s|%s|%.2f", date.toString(), formattedTime, description, vendor, amount);
     }
 }
