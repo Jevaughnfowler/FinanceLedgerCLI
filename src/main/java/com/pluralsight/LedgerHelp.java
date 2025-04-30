@@ -35,7 +35,7 @@ public class LedgerHelp {
         Collections.reverse(lines);
 
         System.out.println("=========================\n" +
-                "  All Transactions \n" +
+                "    All Transactions \n" +
                 "=========================");
         for (String line : lines){
             String[] parts = line.split("\\|");
@@ -250,8 +250,6 @@ public class LedgerHelp {
         System.out.println("-----------------------------------------------------------------------------------------------------------\n");
 
     }
-
-
 
 
 }
