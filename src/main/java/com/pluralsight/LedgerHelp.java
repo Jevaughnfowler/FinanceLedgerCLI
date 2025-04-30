@@ -72,7 +72,7 @@ public class LedgerHelp {
                         parts[0], parts[1], parts[2], parts[3], amount);
             }
         }
-        System.out.println("-------------------------------------------------------------------------------------------\n");
+        System.out.println("----------------------------------------------------------------------------------------------------\n");
     }
 
 //showing payments only
@@ -102,7 +102,7 @@ public class LedgerHelp {
                         parts[0], parts[1], parts[2], parts[3], amount);
             }
         }
-        System.out.println("-------------------------------------------------------------------------------------------\n");
+        System.out.println("----------------------------------------------------------------------------------------------------\n");
     }
 
 // Reports menu options
@@ -121,7 +121,7 @@ public class LedgerHelp {
             return;
         }
 
-        System.out.println("====================\n" +
+        System.out.println("=======================\n" +
                 "   Month To Date \n" +
                 "======================");
         for (String line : lines){
@@ -131,7 +131,7 @@ public class LedgerHelp {
                 System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
             }
         }
-        System.out.println("--------------------------------------------------------------------------------------------\n");
+        System.out.println("------------------------------------------------------------------------------------------------------\n");
     }
 
 //show previous month to date
@@ -155,10 +155,15 @@ public class LedgerHelp {
         for(String line : lines){
             String[] parts = line.split("\\|");
             LocalDate transactionDate = LocalDate.parse(parts[0]);
-            if (transactionDate.getMonth() == previousMonth.getMonth() && transactionDate.getYear() == previousMonth.getYear()); //error in this line something is wrong 
+            if (transactionDate.getMonth() == previousMonth.getMonth() && transactionDate.getYear() == previousMonth.getYear())
+            {
+                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n",
+                        parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+
+            }
 
         }
-        System.out.println("-------------------------------------------------------------------------------------------\n");
+        System.out.println("----------------------------------------------------------------------------------------------------\n");
     }
 
 //showing year to date
@@ -187,7 +192,7 @@ public class LedgerHelp {
                 System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
             }
         }
-        System.out.println("--------------------------------------------------------------------------------------------\n");
+        System.out.println("----------------------------------------------------------------------------------------------------\n");
     }
 
 //showing previous year to date
@@ -215,7 +220,7 @@ public class LedgerHelp {
                 System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
             }
         }
-        System.out.println("--------------------------------------------------------------------------------------------\n");
+        System.out.println("-----------------------------------------------------------------------------------------------------\n");
     }
 
 
@@ -242,7 +247,7 @@ public class LedgerHelp {
                 System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0],parts[1],parts[2],vendor, Double.parseDouble(parts[4]));
             }
         }
-        System.out.println("--------------------------------------------------------------------------------------------\n");
+        System.out.println("-----------------------------------------------------------------------------------------------------------\n");
 
     }
 
