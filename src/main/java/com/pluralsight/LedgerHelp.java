@@ -79,7 +79,7 @@ public class LedgerHelp {
     public static void showPaymentsOnly(){
         ArrayList<String> lines = new ArrayList<>();
 
-        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while((line = reader.readLine()) != null){
                 lines.add(line);
@@ -111,7 +111,7 @@ public class LedgerHelp {
         LocalDate today = LocalDate.now();
         List<String> lines = new ArrayList<>();
 
-        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while ((line = reader.readLine()) != null){
                 lines.add(line);
@@ -121,7 +121,7 @@ public class LedgerHelp {
             return;
         }
 
-        System.out.println("================\n" +
+        System.out.println("====================\n" +
                 "   Month To Date \n" +
                 "======================");
         for (String line : lines){
@@ -140,7 +140,7 @@ public class LedgerHelp {
         LocalDate previousMonth = today.minusMonths(1);
         List<String> lines = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while ((line = reader.readLine()) != null){
                 lines.add(line);
@@ -149,13 +149,13 @@ public class LedgerHelp {
             System.out.println("⚠️ Error reading transactions: " + e.getMessage());
             return;
         }
-        System.out.println("========================\n" +
+        System.out.println("==========================\n" +
                 "    Previous Month    \n" +
-                "================================");
+                "==========================");
         for(String line : lines){
             String[] parts = line.split("\\|");
             LocalDate transactionDate = LocalDate.parse(parts[0]);
-            if (transactionDate.getMonth() == previousMonth.getMonth() && transactionDate.getYear() == previousMonth.getYear());
+            if (transactionDate.getMonth() == previousMonth.getMonth() && transactionDate.getYear() == previousMonth.getYear()); //error in this line something is wrong 
 
         }
         System.out.println("-------------------------------------------------------------------------------------------\n");
@@ -166,7 +166,7 @@ public class LedgerHelp {
         LocalDate today = LocalDate.now();
         List<String> lines = new ArrayList<>();
 
-        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while ((line = reader.readLine()) != null){
                 lines.add(line);
@@ -177,13 +177,18 @@ public class LedgerHelp {
 
         }
 
-        System.out.println("===================\n" +
+        System.out.println("========================\n" +
                 "     Year To Date     \n" +
                 "========================");
-        for(String line : lines) {}
+        for(String line : lines) {
+            String[] parts = line.split("\\|");
+            LocalDate transactionDate = LocalDate.parse(parts[0]);
+            if (transactionDate.getYear() == today.getYear()){
+                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+            }
+        }
+        System.out.println("--------------------------------------------------------------------------------------------\n");
     }
-
-
 
 //showing previous year to date
     public static void showPreviousYear(){
@@ -191,7 +196,7 @@ public class LedgerHelp {
         LocalDate previousYear = today.minusYears(1);
         List<String> lines = new ArrayList<>();
 
-        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
@@ -200,17 +205,45 @@ public class LedgerHelp {
             System.out.println("⚠️ Error reading transactions: " + e.getMessage());
             return;
         }
-        System.out.println("=====================\n" +
+        System.out.println("==========================\n" +
                 "      Previous Year    \n" +
                 "==========================" );
         for(String line : lines) {
             String[] parts = line.split("\\|");
             LocalDate transactionDate = LocalDate.parse(parts[0]);
             if (transactionDate.getYear() == previousYear.getYear()){
-                System.out.printf("Date: %s | Time: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
             }
         }
         System.out.println("--------------------------------------------------------------------------------------------\n");
+    }
+
+
+//search by transaction by vendors
+    public static void searchTransactionByVendor(String vendorName){
+        List<String> lines = new ArrayList<>();
+
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
+            String line;
+            while((line = reader.readLine()) != null){
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            System.out.println("⚠️ Error reading transactions: " + e.getMessage());
+            return;
+        }
+        System.out.println("====================================   \n  " + vendorName
+                + " | Transactions By Vendor   \n" +
+                "=====================================");
+        for (String line : lines) {
+            String[] parts = line.split("\\|");
+            String vendor = parts[3];
+            if (vendor.equalsIgnoreCase(vendorName)){
+                System.out.printf("Date: %s | Time: %s | Description: %s | Vendor: %s | Amount: $%.2f\n", parts[0],parts[1],parts[2],vendor, Double.parseDouble(parts[4]));
+            }
+        }
+        System.out.println("--------------------------------------------------------------------------------------------\n");
+
     }
 
 

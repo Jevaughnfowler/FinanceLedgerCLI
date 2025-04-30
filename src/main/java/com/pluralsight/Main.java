@@ -14,14 +14,13 @@ public class Main {
     }
 
     //This is my user interface where it Prompt the user for an response to select from the following option.
-    //
 
     private static void HomeScreen() {
         String homeScreenPrompt = "===================================" +
                 "\n Welcome To The Accounting Ledger" +
                 "\n===================================" +
                 "\n(D) Add Deposit" +
-                "\n(P) Make Deposit (Debit)" +
+                "\n(P) Make Payment (Debit)" +
                 "\n(L) Ledger" +
                 "\n(X) Exit" +
                 "\nPlease Select An option";
@@ -142,6 +141,8 @@ public class Main {
         Console console = new Console();
         String choice;
 
+      do {
+
         System.out.println("Please choose an option: \n" +
                 "(A) All\n" +
                 "(D) Deposits\n" +
@@ -167,7 +168,35 @@ public class Main {
                         "(2) Previous Month\n" +
                         "(3) Year To Date\n" +
                         "(4) Previous Year\n" +
-                        "(5) Search by Vendor");
+                        "(5) Search by Vendor\n" +
+                        "(0) back ");
+
+                String reportChoice = scanner.nextLine();
+                switch (reportChoice){
+                    case "1":
+                        LedgerHelp.showMonthToDate();
+                        break;
+                    case "2":
+                        LedgerHelp.showPreviousMonths();
+                        break;
+                    case "3":
+                        LedgerHelp.showYearToDate();
+                        break;
+                    case "4":
+                        LedgerHelp.showPreviousYear();
+                        break;
+                    case "5":
+                        System.out.println("Enter Vendor Name: ");
+                        String vendorName = scanner.nextLine().toUpperCase().trim();
+                        LedgerHelp.searchTransactionByVendor(vendorName);
+                        break;
+                    case "0":
+                        System.out.println("Returning to Ledger Menu...");
+                        return;
+                    default:
+                        System.out.println("Invalid, Please Select an Option");
+                        break;
+                }
                 break;
             case "H":
                 System.out.println("Returning Home...");
@@ -176,6 +205,8 @@ public class Main {
                 System.out.println("Invalid, Please try again");
 
         }
+      }while (!choice.equals("H"));
+
 
 
     }
