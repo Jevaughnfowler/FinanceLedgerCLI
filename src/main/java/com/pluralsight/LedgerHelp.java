@@ -18,6 +18,7 @@ public class LedgerHelp {
     }
 
 //ledger menu option
+    //showing all transaction
     public static void showAllTransactions(){
         List<String> lines = new ArrayList<>();
 
@@ -44,7 +45,7 @@ public class LedgerHelp {
         System.out.println("-------------------------------------------------------------------------------------------\n");
     }
 
-
+//showing deposits only
     public static void showDepositsOnly(){
         List<String> lines = new ArrayList<>();
 
@@ -74,7 +75,7 @@ public class LedgerHelp {
         System.out.println("-------------------------------------------------------------------------------------------\n");
     }
 
-
+//showing payments only
     public static void showPaymentsOnly(){
         ArrayList<String> lines = new ArrayList<>();
 
@@ -105,6 +106,7 @@ public class LedgerHelp {
     }
 
 // Reports menu options
+    //showing month to date
     public static void showMonthToDate(){
         LocalDate today = LocalDate.now();
         List<String> lines = new ArrayList<>();
@@ -132,7 +134,7 @@ public class LedgerHelp {
         System.out.println("--------------------------------------------------------------------------------------------\n");
     }
 
-
+//show previous month to date
     public static void showPreviousMonths(){
         LocalDate today = LocalDate.now();
         LocalDate previousMonth = today.minusMonths(1);
@@ -159,7 +161,31 @@ public class LedgerHelp {
         System.out.println("-------------------------------------------------------------------------------------------\n");
     }
 
+//showing year to date
+    public static void showYearToDate(){
+        LocalDate today = LocalDate.now();
+        List<String> lines = new ArrayList<>();
 
+        try(BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            System.out.println("⚠️ Error reading transactions: " + e.getMessage());
+            return;
+
+        }
+
+        System.out.println("===================\n" +
+                "     Year To Date     \n" +
+                "========================");
+        for(String line : lines) {}
+    }
+
+
+
+//showing previous year to date
     public static void showPreviousYear(){
         LocalDate today = LocalDate.now();
         LocalDate previousYear = today.minusYears(1);
@@ -187,7 +213,8 @@ public class LedgerHelp {
         System.out.println("--------------------------------------------------------------------------------------------\n");
     }
 
-    
+
+
 
 }
 
