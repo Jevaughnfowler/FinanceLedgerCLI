@@ -21,17 +21,15 @@ public class LedgerHelp {
     //showing all transaction
     public static void showAllTransactions(){
         List<String> lines = new ArrayList<>();
-
-        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))) {
             String line;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 lines.add(line);
             }
         } catch (IOException e) {
             System.out.println("⚠️ Error reading transactions: " + e.getMessage());
             return;
         }
-
         Collections.reverse(lines);
 
         System.out.println("=========================\n" +
