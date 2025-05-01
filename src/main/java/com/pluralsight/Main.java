@@ -5,12 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
+    ArrayList<Transaction> transactions;
 
     private static Scanner scanner = new Scanner(System.in);
 
 
     public static void main(String[] args) {
         HomeScreen();
+
     }
 
     //This is my user interface where it Prompt the user for an response to select from the following option.

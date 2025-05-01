@@ -66,4 +66,5 @@ public class Transaction {
         String formattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         return String.format("%s|%s|%s|%s|%.2f", date.toString(), formattedTime, description, vendor, amount);
     }
+
 }
