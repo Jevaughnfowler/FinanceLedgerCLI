@@ -13,13 +13,15 @@ Below, you'll find screenshots and details highlighting how the ledger works and
 
 (Making a deposit)
 
-![Screenshot 2025-04-30 202958](https://github.com/user-attachments/assets/3e7edc00-3935-4451-b483-31430114c848)
+![Screenshot 2025-05-01 081030](https://github.com/user-attachments/assets/af813b0f-6487-4620-b3b2-fa75ea6f5f0a)
+
 
 (Making A Payment)
 
 ![Screenshot 2025-04-30 203815](https://github.com/user-attachments/assets/1858ab3c-99bd-4151-b6c8-57b68a334cc4)
 
 (After Making a payment and Deposit You can see both transcations taking place in my transaction.csv)
+
 
 
 
