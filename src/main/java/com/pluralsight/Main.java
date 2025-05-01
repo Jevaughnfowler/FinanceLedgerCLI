@@ -144,7 +144,9 @@ public class Main {
         String choice;
 
       do {
-
+          System.out.println("=======================\n" +
+                  "      Ledger Menu   \n" +
+                  "=======================");
         System.out.println("Please choose an option: \n" +
                 "(A) All\n" +
                 "(D) Deposits\n" +
@@ -165,6 +167,9 @@ public class Main {
                 LedgerHelp.showPaymentsOnly();
                 break;
             case "R":
+                System.out.println("========================\n" +
+                        "     Reports Menu    \n" +
+                        "========================");
                 System.out.println("Choose report type: \n" +
                         "(1) Month To Date\n" +
                         "(2) Previous Month\n" +
@@ -193,7 +198,7 @@ public class Main {
                         LedgerHelp.searchTransactionByVendor(vendorName);
                         break;
                     case "0":
-                        System.out.println("Returning to Ledger Menu...");
+                        System.out.println("Returning to Report Menu...");
                         return;
                     default:
                         System.out.println("Invalid, Please Select an Option");

@@ -25,7 +25,6 @@ public class LedgerHelp {
         try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while((line = reader.readLine()) != null){
-                System.out.println("Reading line: "+ line);
                 lines.add(line);
             }
         } catch (IOException e) {
