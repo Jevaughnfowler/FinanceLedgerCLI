@@ -22,10 +22,45 @@ Below, you'll find screenshots and details highlighting how the ledger works and
 
 (After Making a payment and Deposit You can see both transcations taking place in my transaction.csv)
 
-
-
+![Screenshot 2025-05-01 195842](https://github.com/user-attachments/assets/2d10d311-4977-46f3-89e9-d77c42ff153c)
 
 (Entering The Ledger Menu)
 
 ![Screenshot 2025-04-30 204001](https://github.com/user-attachments/assets/e825f528-8c58-4f5e-9811-4b4f22224596)
+
+(Into The Ledger Menu looking at all the deposit)
+
+![Screenshot 2025-05-01 200538](https://github.com/user-attachments/assets/faaa8d34-c119-4b3c-afa9-826a76e30c36)
+
+(Looking into the the Payment transactions)
+
+![Screenshot 2025-05-01 200804](https://github.com/user-attachments/assets/50fea02e-d40e-4f6f-9547-ac956ecf7847)
+
+(Into reports and deplaying the menu)
+
+![Screenshot 2025-05-01 201130](https://github.com/user-attachments/assets/59133ea2-6612-4fc8-918f-18ac1f72a450)
+
+(Showing the Month to date transaction)
+
+![Screenshot 2025-05-01 201305](https://github.com/user-attachments/assets/3fae7cd8-708f-47be-9c1a-b2fb274becad)
+
+(Showing previous Month)
+
+![Screenshot 2025-05-01 201439](https://github.com/user-attachments/assets/d5c2b43c-da4b-4351-ab01-afb603e6c613)
+
+(Show  Year to Date)
+
+![Screenshot 2025-05-01 201707](https://github.com/user-attachments/assets/657d5083-eca6-4c50-90cd-7284ca883257)
+
+(Showing Previous Year)
+
+![Screenshot 2025-05-01 202319](https://github.com/user-attachments/assets/c3491d36-37d1-488f-883e-7945f5f91414)
+
+(showing search by vendor)
+
+![Screenshot 2025-05-01 202708](https://github.com/user-attachments/assets/246d30b4-0ffe-4550-aef1-56444a4dfecb)
+
+
+Thank you for visiting
+
 
